@@ -1,0 +1,33 @@
+name: test-plugin
+version: 0.0.1
+language: php
+description: this is the plugin example yml
+tags:
+ - fir
+ - plugin
+
+# public: false
+# clone_in_docker: false
+
+inputs:
+  - name: FLOW_FIR_API_TOKEN
+    editable: true
+
+  - name: FLOW_FIR_APP_PATH
+    editable: false
+
+outputs:
+  - name: FLOW_FIR_RESULT
+
+script: |
+  file_path="./dist/index.html"
+  curl -# -F file=@${file_path} -F "key=$key" -F "token=$token" $upload_url
+  FLOW_RUBOCOP_RENDER_URL=$download_url
+  echo "details: $FLOW_RUBOCOP_RENDER_URL"
+# script_path: ./code/run.sh
+
+template: |
+  <div style="position: relative;height: 500px;">
+    <a href="${FLOW_RUBOCOP_RENDER_URL}" style="position: absolute;top: 12px;right: 12px;z-index: 10;display: block; padding: 8px 14px; background: #81BF15; color: #fff;" target="_blank">Expand</a>
+    <iframe style="width: 100%;border: none;height: 100%;" src="${FLOW_RUBOCOP_RENDER_URL}"></iframe>
+  </div>
