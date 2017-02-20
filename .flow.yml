@@ -74,18 +74,18 @@ flows:
           - echo "hello world1"
           - echo "hello world2"
 
-#  - name: flow-2
-#    trigger:
-#      push:
-#        - develop
+  - name: flow-2
+    trigger:
+      push:
+        - master
 
-    # steps definition, cannot define both plugin and scripts
-#    steps:
-#      - name: step_1
-#        enable: true
-#        failure: false
-#        plugin:
-#          name: android_init
-#          inputs:
-#            - FLOW_WORK_SPACE=12
-#            - FLOW_WORK_XXXXX=14
+#     steps definition, cannot define both plugin and scripts
+    steps:
+      - name: step_100
+        enable: true
+        failure: false
+        plugin:
+          name: android_init
+          inputs:
+            - FLOW_WORK_SPACE=12
+            - FLOW_WORK_XXXXX=14
